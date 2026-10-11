@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VINZXCYY Music</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♫</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOGIN SCREEN ELEGAN ============ -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-bg"></div>
+  <div class="login-particles" id="particles"></div>
+  <div class="login-glow login-glow-1"></div>
+  <div class="login-glow login-glow-2"></div>
+  <div class="login-glow login-glow-3"></div>
+
+  <div class="login-panel" id="loginPanel">
+    <div class="panel-logo">
+      <div class="logo-circle">
+        <span class="logo-icon">♫</span>
+        <div class="logo-ring"></div>
+      </div>
+    </div>
+
+    <div class="panel-heading">
+      <h1 class="panel-title">
+        <span class="panel-title-main">VINZXCYY</span>
+      </h1>
+      <p class="panel-sub">Premium Audio Experience</p>
+    </div>
+
+    <div class="panel-tabs">
+      <button class="tab-btn active" data-tab="login">MASUK</button>
+      <button class="tab-btn" data-tab="register">DAFTAR</button>
+      <div class="tab-slider" id="tabSlider"></div>
+    </div>
+
+    <form id="loginForm" class="auth-form active">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="loginUser" placeholder="Masukkan username" autocomplete="off" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="loginPass" placeholder="Masukkan password" required>
+      </div>
+      <p class="panel-msg" id="loginMsg"></p>
+      <button type="submit" class="btn-auth">
+        <span>Masuk</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </form>
+
+    <form id="registerForm" class="auth-form">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="regUser" placeholder="Minimal 3 karakter" autocomplete="off" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="regPass" placeholder="Minimal 6 karakter" required>
+      </div>
+      <div class="field">
+        <label>Konfirmasi Password</label>
+        <input type="password" id="regPass2" placeholder="Ulangi password" required>
+      </div>
+      <p class="panel-msg" id="regMsg"></p>
+      <button type="submit" class="btn-auth">
+        <span>Buat Akun</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </form>
+
+    <div class="panel-footer">
+      <div class="footer-dot"></div>
+      <span>Secure Connection</span>
+      <div class="footer-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WELCOME SPLASH (setelah login sukses) ============ -->
+<div id="welcomeScreen" class="welcome-screen hidden">
+  <div class="welcome-content">
+    <div class="welcome-check">
+      <svg viewBox="0 0 52 52" class="check-svg">
+        <circle class="check-circle" cx="26" cy="26" r="24" fill="none"/>
+        <path class="check-mark" fill="none" d="M14 27l8 8 16-16"/>
+      </svg>
+    </div>
+    <p class="welcome-small">LOGIN BERHASIL</p>
+    <h1 class="welcome-name" id="welcomeName">User</h1>
+    <div class="welcome-line"></div>
+    <p class="welcome-tag">Selamat datang kembali</p>
+  </div>
+</div>
+
+<!-- ============ INTRO VIDEO (setelah welcome) ============ -->
+<div id="introScreen" class="intro-screen hidden">
+  <video id="introVideo" class="intro-video" autoplay muted playsinline preload="auto">
+    <source src="assets/intro.mp4" type="video/mp4">
+  </video>
+  <div class="intro-overlay"></div>
+  <button id="skipIntro" class="skip-intro">Lewati →</button>
+</div>
+
+<!-- ============ HACK LOADER (loading ke main app) ============ -->
+<div id="hackLoader" class="hack-loader hidden">
+  <div class="hack-terminal">
+    <div class="hack-terminal-body">
+      <div class="term-line" id="t1"></div>
+      <div class="term-line" id="t2"></div>
+      <div class="term-line" id="t3"></div>
+      <div class="term-line" id="t4"></div>
+      <div class="term-line" id="t5"></div>
+      <div class="term-line err" id="t6"></div>
+      <div class="progress-hack"><div id="hackBar"></div></div>
+      <div class="hack-skull">✓ SIAP</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div id="mainApp" class="main-app hidden">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-mark">♫</div>
+      <div>
+        <div class="sidebar-brand-text">VINZXCYY</div>
+        <div class="sidebar-brand-sub">MUSIC VAULT</div>
+      </div>
+    </div>
+    <div class="sidebar-section-title">Playlist</div>
+    <ul class="playlist-list" id="playlistList">
+      <li data-pl="all"><span>◉ Semua Lagu</span></li>
+      <li data-pl="fav"><span>♡ Favorit</span></li>
+      <li data-pl="recent"><span>◔ Terbaru</span></li>
+    </ul>
+    <div class="sidebar-bottom">
+      <button id="logoutBtn" class="logout-btn">⏻ LOGOUT</button>
+    </div>
+  </aside>
+  <main class="content">
+    <header class="topbar">
+      <div class="user-chip">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div class="user-name" id="welcomeUser">User<small>SESSION</small></div>
+      </div>
+      <input type="text" id="searchInput" placeholder="cari lagu..." class="search-bar">
+      <div class="filter-chips">
+        <button class="chip active" data-genre="all">SEMUA</button>
+        <button class="chip" data-genre="galau">GALAU</button>
+        <button class="chip" data-genre="semangat">SEMANGAT</button>
+        <button class="chip" data-genre="santai">SANTAI</button>
+        <button class="chip" data-genre="hacker">HACKER</button>
+      </div>
+    </header>
+
+    <section class="hero hero-video">
+      <video class="hero-video-bg" autoplay muted loop playsinline preload="auto">
+        <source src="assets/banner.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">▸ AKSES TERVERIFIKASI</div>
+        <h2>Selamat datang kembali, <span id="heroName" style="color:#ff0033">User</span>.</h2>
+        <p>Semua lagu siap diputar. Sistem siap menerima perintah.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">TOTAL<b id="statTotal">10</b></div>
+          <div class="hero-stat">FAVORIT<b id="statFav">0</b></div>
+          <div class="hero-stat">DIPUTAR<b id="statRecent">0</b></div>
+          <div class="hero-stat">STATUS<b style="color:#00ff41">ONLINE</b></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <h3 id="sectionTitle">Semua Lagu</h3>
+      <span id="sectionCount">0 lagu</span>
+    </div>
+    <section id="songList" class="song-list"></section>
+  </main>
+  <div class="player">
+    <div class="now-playing">
+      <div class="np-cover" id="playerCover">♪</div>
+      <div class="np-info">
+        <div id="npTitle">Tidak ada lagu</div>
+        <div id="npArtist">-</div>
+      </div>
+    </div>
+    <div class="player-controls">
+      <button id="shuffleBtn">⤨</button>
+      <button id="prevBtn">⏮</button>
+      <button id="playBtn" class="play-btn">▶</button>
+      <button id="nextBtn">⏭</button>
+      <button id="repeatBtn">↻</button>
+    </div>
+    <div class="player-progress">
+      <span id="curTime">0:00</span>
+      <input type="range" id="progressBar" class="range" min="0" max="100" value="0" style="width:100%">
+      <span id="durTime">0:00</span>
+    </div>
+    <div class="player-volume">
+      <span class="vol-icon" id="volIcon">◐</span>
+      <input type="range" id="volumeBar" class="range" min="0" max="100" value="70">
+    </div>
+    <audio id="audioEl"></audio>
+  </div>
+</div>
+
+<div id="toastStack" class="toast-stack"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
